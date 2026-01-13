@@ -1,6 +1,7 @@
-### Guidelines to ensure a smooth navigation:
+## Project Structure
 
-Here is the directory structure:
+---
+### Directory schema for the backend knowledge base repository.
 
 ```
 backend/
@@ -11,10 +12,11 @@ backend/
 ├── golang/             # source code and documentation directory
 ├── java/               # source code and documentation directory (Intellij compatible)
 ├── Projects/           # documentation directory (No business logic, just code snippets of Intellectual property)
-├── rust/               # source code and documentation directory
+├── javascript/               # source code and documentation directory
 
 ````
+Summarize:
 
--  Only document verified information.
+-  Each language directory behaves as a standalone project.
 -  Use *Sentence casing* when you have a directory for Documentation.
 -  Use *Lower casing* when you have a directory containing source code and documentation.

@@ -1,7 +1,6 @@
 ## Development Guidelines
 
 ---
-
 ### Commit standards:
 - Commits are meant to be atomic, every single commit will have a small yet significant change.
 - The prefix used in a commit message should be aligned with the type of change being made. These are the mentioned types:
