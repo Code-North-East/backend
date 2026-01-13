@@ -1,8 +1,7 @@
 #main.py
 
-
-def checkMessage() :
+def printMessage() :
     message = "Hello"
     print(message)
 
-checkMessage()
+printMessage()
