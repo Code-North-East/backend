@@ -1,6 +1,5 @@
-## Golang Handbook: A Beginner to Advanced Guide
+## Golang Guide
 
-###### Last Draft Date: 14th December, 2025
 
 **Go:** Golang is a general purpose programming language which is statically typed and compiled. It was designed at Google.
 
