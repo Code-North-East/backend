@@ -23,6 +23,6 @@ An epic if, needs to defined in simple words _It can be termed as a document whi
 
 - A feature should always be part of an epic.
 - An **Epic doc** will contain all the necessary design docs related to the development and deployment and integration of that feature.
-- A [story](abbreviations.md#Story/Issue/Ticket) should never be derived from a draft epic & once an epic is finalized, stories should be created from that epic.
+- A [story](abbreviations.md#storyissueticket) should never be derived from a draft epic & once an epic is finalized, stories should be created from that epic.
 
 
