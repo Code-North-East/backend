@@ -1,7 +1,7 @@
-module github.com/pratyayganguli/backend/golang
+module golang
 
-go 1.25.0
+go 1.26.1
 
-require go.uber.org/zap v1.27.0
+require go.uber.org/zap v1.27.1
 
-require go.uber.org/multierr v1.11.0 // indirect
+require go.uber.org/multierr v1.10.0 // indirect

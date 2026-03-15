@@ -9,12 +9,12 @@ As, Go is a compiled language when we run commands like `go build` or `go run` t
 
 ### Important concepts:
 
-- [Memory Management](./Memory-Management.md)
-- [Concurrency](./concurrency/Concurrency.md)
-- [Error Handling](./error/ErrorHandlingPractices.md)
-- [Mongo DB](./concurrency/Mongo.md)
-- [Reflection](./Reflection.md)
-- [Design Patterns](./Design-Patterns.md)
+- [Memory Management](./memory/README.md)
+- [Concurrency](./concurrency/README.md)
+- [Error Handling](./error/README.md)
+- [Mongo DB](./concurrency/README.md)
+- [Reflection](./reflection/README.md)
+- [Design Patterns](./design_patterns/README.md)
 
 ### Building the container image and running the container to run all the eligible tests and the code.
 
