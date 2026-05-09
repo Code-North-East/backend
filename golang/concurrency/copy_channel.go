@@ -38,5 +38,4 @@ func SelectUsage() {
 	for val := range cch {
 		fmt.Println("data received on copy channel", val)
 	}
-
 }
