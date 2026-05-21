@@ -16,7 +16,7 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     // spring boot dependencies...
-    implementation("org.sprinegframework.boot:spring-boot-starter-web:3.5.6")
+    implementation("org.springframework.boot:spring-boot-starter-web:3.5.6")
     testImplementation("org.springframework.boot:spring-boot-starter-test:3.5.6")
 
     // other dependencies...
