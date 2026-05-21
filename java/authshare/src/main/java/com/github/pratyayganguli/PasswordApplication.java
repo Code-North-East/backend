@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PasswordApplication {
     public static void main(String[] args) {
+        // entry point of the program...
         SpringApplication.run(PasswordApplication.class, args);
     }
 }

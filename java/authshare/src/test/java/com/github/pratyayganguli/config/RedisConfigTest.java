@@ -1,11 +1,18 @@
 package com.github.pratyayganguli.config;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.*;
 import redis.clients.jedis.csc.CacheConfig;
 
 public class RedisConfigTest {
     // todo: run this test when you have a local docker container.
+
+    @BeforeAll
+    static void startLocalRedisContainer() {
+        // write the logic to start the local redis container using the docker api...
+    }
+
     @Test
     void testRedisConnection() {
         HostAndPort endPoint = new HostAndPort("localhost", 6379);
