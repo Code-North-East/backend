@@ -20,7 +20,7 @@ coverage.*
 profile.cov
 go.work.sum
 **/vendor/
-.env
+**/*.env
 .idea/
 *.iml
 *.iws
