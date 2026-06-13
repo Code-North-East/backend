@@ -1,4 +1,5 @@
-from config.settings import CONFIG
+# main.py
+
 from loguru import logger
 
 def main():
