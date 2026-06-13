@@ -1,5 +1,7 @@
 import os
+
 from dotenv import load_dotenv
+
 
 # Loading configuration from .env file
 def load_config():
@@ -9,4 +11,3 @@ def load_config():
     }
 
 CONFIG = load_config()
-

@@ -13,3 +13,8 @@ dependencies = [
     "requests>=2.34.2",
     "requests-mock>=1.12.1",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.17",
+]

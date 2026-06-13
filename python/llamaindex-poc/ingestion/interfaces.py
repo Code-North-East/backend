@@ -1,11 +1,12 @@
 # ingestion/interfaces.py
-from abc import abstractmethod, ABC
-from typing import List
+
+from abc import ABC, abstractmethod
+
 
 class BaseSiteMapCrawler(ABC):
 
     @abstractmethod
-    def fetch_urls(self) -> List[str]:
+    def fetch_urls(self) -> list[str]:
         """
         Discovers, filters and returns a list of strings (targeted urls)
         :return: list of strings

@@ -1,11 +1,12 @@
 # ingestion/site_map_crawler
 
-from abc import ABC
-from typing import List, Optional, Set
-from loguru import logger
+import re
+from abc import ABC, abstractmethod
+
 import requests
 from bs4 import BeautifulSoup
-import re
+from loguru import logger
+
 
 class SiteMapCrawler(ABC):
     """
@@ -15,7 +16,7 @@ class SiteMapCrawler(ABC):
     def __init__(
             self,
             sitemap_url: str,
-            exclude_patterns: Optional[List[str]] = None,
+            exclude_patterns: list[str] = None,
             timeout: int = 15,
     ):
         """Initializes the sitemap crawler.
@@ -35,15 +36,15 @@ class SiteMapCrawler(ABC):
             r"\.pdf$", r"\.png$", r"\.jpg$", r"\.jpeg$",
             r"\.gif$", r"\.zip$", r"\.xml$", r"#"
         ]
-
-    def fetch_urls(self) -> List[str]:
+    @abstractmethod
+    def fetch_urls(self) -> list[str]:
         """Entry point to extract, filter, and deduplicate documentation URLs.
 
         Returns:
-            List[str]: A unique, sorted list of verified documentation URLs.
+            List[str]: A unique, list of verified documentation URLs.
         """
         logger.info(f"Starting sitemap discovery at: {self.sitemap_url}")
-        discovered_urls: Set[str] = set()
+        discovered_urls: set[str] = set()
 
         # Recursively parse the root sitemap
         self._parse_sitemap_recursive(self.sitemap_url, discovered_urls)
@@ -52,9 +53,9 @@ class SiteMapCrawler(ABC):
         clean_urls = self._filter_and_normalize(discovered_urls)
 
         logger.info(f"Successfully collected {len(clean_urls)} target URLs.")
-        return sorted(list(clean_urls))
+        return list(clean_urls)
 
-    def _parse_sitemap_recursive(self, url: str, discovered_urls: Set[str]) -> None:
+    def _parse_sitemap_recursive(self, url: str, discovered_urls: set[str]) -> None:
         """Downloads an XML sitemap and checks if it contains sub-sitemaps
 
         or leaf URLs.
@@ -87,9 +88,9 @@ class SiteMapCrawler(ABC):
             if loc_tag and loc_tag.text:
                 discovered_urls.add(loc_tag.text.strip())
 
-    def _filter_and_normalize(self, raw_urls: Set[str]) -> Set[str]:
+    def _filter_and_normalize(self, raw_urls: set[str]) -> set[str]:
         """Cleans trailing slashes and drops asset noise or restricted paths."""
-        processed_urls: Set[str] = set()
+        processed_urls: set[str] = set()
 
         # Compile exclusion patterns for performance
         compiled_patterns = [re.compile(p) for p in self.exclude_patterns]

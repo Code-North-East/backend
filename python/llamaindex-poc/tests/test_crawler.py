@@ -1,6 +1,7 @@
 import requests_mock
 from ingestion.site_map_crawler import SiteMapCrawler
 
+
 def test_fetch_urls_standard_sitemap():
     """Test standard sitemap parsing with text extraction, cleaning, and deduplication."""
     sitemap_url = "https://example.com"
