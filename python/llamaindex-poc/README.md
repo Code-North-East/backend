@@ -20,12 +20,11 @@ staying dependent on static training data. It helps in curbing hallucinations an
 
 ### Applications
 
-
 ---
 
 ## Tasks completed in this PoC (Definition of done)
 
-- [ ] 1 Document everything you understand about RAG.
+- [ ] 1 Document everything you understand about RAG in Any
 - [ ] 2 Document how LlamaIndex acts as a framework for developing llm applications 
 - [ ] 3 Implementation checklist 
     - [ ] 3.1  Prepare a knowledge base supporting the application.
