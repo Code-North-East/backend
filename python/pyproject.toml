@@ -1,0 +1,45 @@
+[tool.ruff]
+# Target the specific Python version your subprojects use
+target-version = "py314"
+
+# Set the maximum line length (88 is the modern standard used by Black)
+line-length = 88
+
+# Files or directories to ignore across all subprojects
+extend-exclude = [
+    ".git",
+    "build",
+    "dist",
+    "venv",
+    ".venv",
+    "__pycache__",
+    "node_modules",
+]
+
+[tool.ruff.lint]
+# Core rule categories enabled for all subprojects
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes (syntax bugs, unused variables/imports)
+    "I",   # isort (automatic import sorting)
+    "B",   # flake8-bugbear (catches design flaws and likely bugs)
+    "C4",  # flake8-comprehensions (forces optimized list/dict syntax)
+    "UP",  # pyupgrade (upgrades code to modern Python syntax patterns)
+]
+
+# Rules to explicitly ignore
+ignore = [
+    "E501", # Ignore line-length violations (let `ruff format` handle wrapping)
+]
+
+# Allow Ruff to automatically fix safe violations (like unused imports)
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.isort]
+# Combines multiple standard library, third-party, or local imports cleanly
+combine-as-imports = true
+
+# Treats your subprojects cleanly when sorting imports
+known-first-party = ["llamaindex-poc"]
