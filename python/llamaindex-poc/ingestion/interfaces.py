@@ -4,7 +4,6 @@ from abc import ABC, abstractmethod
 
 
 class BaseSiteMapCrawler(ABC):
-
     @abstractmethod
     def fetch_urls(self) -> list[str]:
         """

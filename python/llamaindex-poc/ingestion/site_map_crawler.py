@@ -14,10 +14,10 @@ class SiteMapCrawler(ABC):
     """
 
     def __init__(
-            self,
-            sitemap_url: str,
-            exclude_patterns: list[str] = None,
-            timeout: int = 15,
+        self,
+        sitemap_url: str,
+        exclude_patterns: list[str] = None,
+        timeout: int = 15,
     ):
         """Initializes the sitemap crawler.
 
@@ -33,9 +33,16 @@ class SiteMapCrawler(ABC):
 
         # Standard media/asset extensions to filter out automatically
         self._default_exclusions = [
-            r"\.pdf$", r"\.png$", r"\.jpg$", r"\.jpeg$",
-            r"\.gif$", r"\.zip$", r"\.xml$", r"#"
+            r"\.pdf$",
+            r"\.png$",
+            r"\.jpg$",
+            r"\.jpeg$",
+            r"\.gif$",
+            r"\.zip$",
+            r"\.xml$",
+            r"#",
         ]
+
     @abstractmethod
     def fetch_urls(self) -> list[str]:
         """Entry point to extract, filter, and deduplicate documentation URLs.
@@ -94,7 +101,9 @@ class SiteMapCrawler(ABC):
 
         # Compile exclusion patterns for performance
         compiled_patterns = [re.compile(p) for p in self.exclude_patterns]
-        compiled_defaults = [re.compile(p, re.IGNORECASE) for p in self._default_exclusions]
+        compiled_defaults = [
+            re.compile(p, re.IGNORECASE) for p in self._default_exclusions
+        ]
 
         for url in raw_urls:
             # Drop empty or malformed structures
