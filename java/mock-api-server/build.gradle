@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.codenortheast.testing'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:6.0.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // Spring dependencies
+    implementation("org.springframework.boot:spring-boot-starter-web:4.1.0")
+    implementation("org.springframework.boot:spring-boot-starter-validation:4.1.0")
+    implementation("org.springframework.boot:spring-boot-devtools:4.1.0")
+    implementation("org.springframework.boot:spring-boot-starter-test:4.1.0")
+
+    // Lombok dependency
+    implementation("org.projectlombok:lombok:1.18.46")
+
+    // Source: https://mvnrepository.com/artifact/net.datafaker/datafaker
+    implementation("net.datafaker:datafaker:2.5.4")
+}
+
+test {
+    useJUnitPlatform()
+}
