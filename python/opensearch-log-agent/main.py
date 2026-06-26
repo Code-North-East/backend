@@ -1,9 +1,9 @@
 import logging
 
+
 # initiate using the default logging configuration
 def init():
     logging.basicConfig(level=logging.DEBUG)
-
 
 def main():
     init()
