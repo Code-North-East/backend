@@ -4,7 +4,6 @@ Cargo.lock
 *.pdb
 .DS_Store
 *.log
-
 *.exe
 *.exe~
 *.dll
@@ -15,6 +14,10 @@ Cargo.lock
 *.bat
 *.jar
 *.out
+**/*.pyc
+**/__pycache__/
+**/*.pyo
+**/*.pyd
 coverage.*
 *.coverprofile
 profile.cov
@@ -42,3 +45,6 @@ Thumbs.db
 *.class
 *.properties
 hs_err_pid*
+.claude/
+AGENTS.md
+CLAUDE.md
