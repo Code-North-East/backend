@@ -1,7 +1,15 @@
 // @author - Pratyay Ganguli
 // this file will contain all the code being written in Vim for strengthening the DSA and problem solving skills
-// Preparing for Google Senior Software Engineer position
+// Preparing for Senior Software Engineer position
 // No need of writing the coverage you, can invoke all the functions inside main with proper comments.
+
+// Contents of the file
+
+// ---> Linked Lists
+// 	------> Singly Linked List
+// 	------> Doubly Linked List
+// 	------> Circular Linked List
+//  ------> Circular Doubly Linked List
 
 package main
 
@@ -23,16 +31,17 @@ func main() {
 	fmt.Printf("Converted string is %s", s)
 	fmt.Println()
 	// Insert at the head of the singly linked list
-	InsertSLLNodeHead(10)
-	InsertSLLNodeHead(20)
-	DeleteSLLNodeHead()
-	InsertSLLNodeHead(30)
-	ReadSLLNode()
+	// InsertSLLNodeHead(10)
+	// InsertSLLNodeHead(20)
+	// DeleteSLLNodeHead()
+	// InsertSLLNodeHead(30)
+	// ReadSLLNode()
 	// Insert at the tail of the singly linked list to make sure the logic is working as expected.
-	InsertSLLNodeTail(50)
-	InsertSLLNodeTail(60)
-	DeleteSLLNodeTail()
-	InsertSLLNodeTail(70)
+	// InsertSLLNodeTail(50)
+	// InsertSLLNodeTail(60)
+	// DeleteSLLNodeTail()
+	// InsertSLLNodeTail(70)
+
 	// Insert at the head of the doubly linked list
 	InsertDLLNodeHead(15)
 	InsertDLLNodeHead(25)
@@ -57,6 +66,18 @@ func main() {
 	InsertDLLAfterPos(keyNode, 105)
 	ReadDLLNodeHeadToTail()
 	ReadDLLNodeTailToHead()
+	InsertCLLHead(1001)
+	InsertCLLHead(1002)
+	InsertCLLHead(1003)
+	ReadCLL()
+	InsertCLLTail(1006)
+	InsertCLLTail(1005)
+	InsertCLLTail(1007)
+	ReadCLL()
+	DeleteCLLNodeHead()
+	ReadCLL()
+	DeleteCLLNodeTail()
+	ReadCLL()
 }
 
 // let's write a program to convert a string into a number using golang
@@ -127,6 +148,22 @@ func InsertDLLNodeHead(data uint64) {
 		return	
 	}
 	log.Printf("Head - %d; Tail - %d;", headDLLNode.Data, tailDLLNode.Data)
+}
+
+// Insert Circular Linked List use SLLNode
+func InsertCLLHead(data uint64) {
+	if headSLLNode == nil {
+		headSLLNode = &SLLNode{Data: data}
+		tailSLLNode = headSLLNode
+	} else {
+		tempNode := &SLLNode{
+			Data: data,
+			Next: headSLLNode,
+		}
+		headSLLNode = tempNode
+	}
+	tailSLLNode.Next = headSLLNode
+	log.Printf("Head: %d, Tail: %d", headSLLNode.Data, tailSLLNode.Data)
 }	
 
 // Read the data inside the singly linked list
@@ -180,6 +217,27 @@ func ReadDLLNodeTailToHead() {
 				log.Printf("x -> %d -> %d", tempNode.Data, tempNode.Next.Data)
 			}
 			tempNode = tempNode.Prev
+		}
+	}
+}
+
+// Read the data present in the circular linked list
+func ReadCLL() {
+	if headSLLNode == nil {
+		log.Println("No elements present in the list")
+		return
+	} else {
+		log.Println("Reading circular linked list")
+		tempNode := headSLLNode
+		for {
+			if tempNode.Next == headSLLNode {
+				log.Printf("%d", tempNode.Data)
+				return
+			}
+			if tempNode.Next != nil {
+				log.Printf("%d -> %d", tempNode.Data, tempNode.Next.Data)	
+			}
+			tempNode = tempNode.Next
 		}
 	}
 }
@@ -240,6 +298,21 @@ func InsertDLLAfterPos(key *DLLNode, data uint64) {
 		}
 		log.Println("No such key exist in the list")
 	}
+}
+
+// Write the function for inserting data at the end of the circular linked list
+func InsertCLLTail(data uint64) {
+	if tailSLLNode == nil {
+		tailSLLNode = &SLLNode {Data: data}
+		headSLLNode = tailSLLNode
+		tailSLLNode.Next = headSLLNode
+	} else {
+		tempNode := &SLLNode {Data: data}
+		tailSLLNode.Next = tempNode
+		tempNode.Next = headSLLNode
+		tailSLLNode = tempNode
+	}
+	log.Printf("Head: %d, Tail: %d", headSLLNode.Data, tailSLLNode.Data)
 }
 
 // Write the function for deleting from the head
@@ -338,4 +411,40 @@ func DeleteSpecificNodeFromDLL(key *DLLNode) {
 		log.Println("No such element present in the list")
 	}
 }
+
+// Write the function to delete from the head of the circular linked list
+func DeleteCLLNodeHead() {
+	if headSLLNode == nil {
+		log.Println("No elements present in the circular linked list")
+		return
+	} else {
+		fmt.Printf("Popping %d from the linked list", headSLLNode.Data)
+		headSLLNode = headSLLNode.Next
+		tailSLLNode.Next = headSLLNode
+	}
+}
+
+// Write the function to delete from the tail of the circular linked list
+func DeleteCLLNodeTail() {
+	if tailSLLNode == nil {
+		log.Println("No elements present in the circular linked list")
+		return
+	} else {
+		if headSLLNode == nil {
+			log.Println("Cannot traverse the circular linked list head is empty!")
+			return
+		}
+		tempNode := headSLLNode
+		for {
+			if tempNode.Next == tailSLLNode {
+				log.Printf("Popping %d from the circular linked list", tailSLLNode.Data)
+				tempNode.Next = headSLLNode
+				return
+			}
+			tempNode = tempNode.Next
+		}
+	}
+}
+
+
 
