@@ -13,7 +13,7 @@ import (
 
 // execution/entry point of the program
 func main() {
-	fmt.Println("Hello, I am prepping for Senior SWE google!")
+	fmt.Println("Hello, I am prepping for Senior SWE remote position!")
 	if n, e := strToInt("Not a number"); e != nil {
 		fmt.Printf("Cannot convert the value into integer: %v\n", e)
 	} else {
@@ -38,6 +38,25 @@ func main() {
 	InsertDLLNodeHead(25)
 	InsertDLLNodeHead(35)
 	ReadDLLNodeHeadToTail()
+	DeleteDLLNodeTail()
+	ReadDLLNodeTailToHead()
+	// Insert at the tail of the doubly linked list
+	InsertDLLNodeTail(45)
+	InsertDLLNodeTail(55)
+	InsertDLLNodeTail(65)
+	InsertDLLNodeHead(75)
+	InsertDLLNodeHead(85)
+	InsertDLLNodeHead(95)
+	ReadDLLNodeTailToHead()
+	DeleteDLLNodeHead()
+	ReadDLLNodeHeadToTail()
+	keyNode := &DLLNode{ Data: 55}
+	DeleteSpecificNodeFromDLL(keyNode)
+	ReadDLLNodeHeadToTail()
+	keyNode = &DLLNode { Data: 75}
+	InsertDLLAfterPos(keyNode, 105)
+	ReadDLLNodeHeadToTail()
+	ReadDLLNodeTailToHead()
 }
 
 // let's write a program to convert a string into a number using golang
@@ -114,7 +133,7 @@ func InsertDLLNodeHead(data uint64) {
 func ReadSLLNode() {
 	// Check if the head or tail is empty, both of these should not be empty
 	if headSLLNode == nil {
-		log.Println("No elements present in the node")
+		log.Println("No elements present in the list")
 		return
 	} else {
 		tempNode := headSLLNode
@@ -128,8 +147,9 @@ func ReadSLLNode() {
 // Read the data inside the doubly linked list
 func ReadDLLNodeHeadToTail() {
 	if headDLLNode == nil {
-		log.Println("No elements present in the node")
+		log.Println("No elements present in the list")
 	} else {
+		log.Println("Reading doubly linked list")
 		tempNode := headDLLNode
 		for tempNode != nil {
 			if tempNode.Prev != nil && tempNode.Next != nil {
@@ -146,7 +166,22 @@ func ReadDLLNodeHeadToTail() {
 
 // Read the data inside the doubly linked list (inverted)
 func ReadDLLNodeTailToHead() {
-	// To be implemented
+	if tailDLLNode == nil {
+		log.Println("No elements present in the list")
+	} else {
+		log.Println("Reading doubly linked list inverted")
+		tempNode := tailDLLNode
+		for tempNode != nil {
+			if tempNode.Prev != nil && tempNode.Next != nil {
+				log.Printf("%d -> %d -> %d", tempNode.Prev.Data, tempNode.Data, tempNode.Next.Data)
+			} else if tempNode.Prev != nil && tempNode.Next == nil {
+				log.Printf("%d -> %d -> x", tempNode.Prev.Data, tempNode.Data)
+			} else if tempNode.Next != nil && tempNode.Prev == nil {
+				log.Printf("x -> %d -> %d", tempNode.Data, tempNode.Next.Data)
+			}
+			tempNode = tempNode.Prev
+		}
+	}
 }
 
 // Write the function to insert at the tail of the node
@@ -161,6 +196,50 @@ func InsertSLLNodeTail(data uint64) {
 		tailSLLNode = tempNode
 	}
 	log.Printf("Head: %d; Tail: %d\n", headSLLNode.Data, tailSLLNode.Data)
+}
+
+// Write the function to insert at the tail of a doubly linked list
+func InsertDLLNodeTail(data uint64) {
+	if tailDLLNode == nil {
+		tailDLLNode := &DLLNode{Data: data}
+		headDLLNode = tailDLLNode
+		headDLLNode.Next = tailDLLNode
+	} else {
+		tempNode := &DLLNode{Data: data}
+		tailDLLNode.Next = tempNode
+		tempNode.Prev = tailDLLNode
+		tailDLLNode = tempNode
+	}
+	if headDLLNode.Next != nil && tailDLLNode.Prev != nil {
+		log.Printf("Head - %d -> %d; %d <- Tail - %d;", headDLLNode.Data, headDLLNode.Next.Data, tailDLLNode.Prev.Data,tailDLLNode.Data)
+		return
+	}
+	log.Printf("Head - %d; Tail - %d;", headDLLNode.Data, tailDLLNode.Data)
+}
+
+// Write the function to insert a element after a node.
+func InsertDLLAfterPos(key *DLLNode, data uint64) {
+	if headDLLNode == nil {
+		log.Println("No elements present in the linked list")
+		return
+	} else {
+		log.Println("Inserting after a specific position in the doubly linked list")
+		tempNode := headDLLNode
+		for tempNode != nil {
+			if tempNode.Data == key.Data {
+				log.Printf("Adding element after %d", tempNode.Data)
+				newNode := &DLLNode{ Data: data}
+				nextNode := tempNode.Next
+				tempNode.Next = newNode
+				newNode.Prev = tempNode
+				newNode.Next = nextNode
+				nextNode.Prev = newNode
+				return
+			}
+			tempNode = tempNode.Next
+		}
+		log.Println("No such key exist in the list")
+	}
 }
 
 // Write the function for deleting from the head
@@ -178,6 +257,19 @@ func DeleteSLLNodeHead() {
 	// Else just simply remove the element from the head; change the reference of the head
 	log.Printf("Popping %d out", headSLLNode.Data)
 	headSLLNode = headSLLNode.Next
+}
+
+// Write te function for deleting from the head of Doubly Linked List
+func DeleteDLLNodeHead() {
+	if headDLLNode == nil {
+		log.Println("No elements to be deleted from the list")
+	} else {
+		log.Printf("Popping %d from the list", headDLLNode.Data)
+		tempNode := headDLLNode
+		tempNode = tempNode.Next
+		tempNode.Prev = nil
+		headDLLNode = tempNode
+	}
 }
 
 // Write the function for deleting from the tail
@@ -206,6 +298,45 @@ func DeleteSLLNodeTail() {
 			return
 		}
 		tempNode = tempNode.Next
+	}
+}
+
+
+// Write the function for deleting from the tail of the Doubly Linked List
+func DeleteDLLNodeTail() {
+	if tailDLLNode == nil {
+		log.Println("No elements present in the linked list")
+	} else {
+		log.Printf("Popping %d from the list", tailDLLNode.Data)
+		tempNode := tailDLLNode
+		tempNode = tailDLLNode.Prev
+		tempNode.Next = nil
+		tailDLLNode = tempNode
+	}
+}
+
+// Write the function for deleting a specific node from the Doubly Linked List use O(n)
+func DeleteSpecificNodeFromDLL(key *DLLNode) {
+	if key == nil {
+		log.Println("Invalid key; cannot delete")
+		return
+	}
+	if headDLLNode == nil {
+		log.Println("No elements present in the linked list, nothing to delete")
+	} else {
+		tempNode := headDLLNode
+		for tempNode != nil {
+			if tempNode.Data == key.Data {
+				log.Printf("Popping %d from the list", tempNode.Data)
+				prevNode := tempNode.Prev
+				nextNode := tempNode.Next
+				prevNode.Next = nextNode
+				nextNode.Prev = prevNode
+				return
+			}
+			tempNode = tempNode.Next
+		}
+		log.Println("No such element present in the list")
 	}
 }
 
