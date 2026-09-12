@@ -308,8 +308,7 @@ func DeleteDLLNodeTail() {
 		log.Println("No elements present in the linked list")
 	} else {
 		log.Printf("Popping %d from the list", tailDLLNode.Data)
-		tempNode := tailDLLNode
-		tempNode = tailDLLNode.Prev
+		tempNode := tailDLLNode.Prev
 		tempNode.Next = nil
 		tailDLLNode = tempNode
 	}
