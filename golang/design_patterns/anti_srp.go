@@ -2,7 +2,7 @@ package designpatterns
 
 // Adding the anti-srp implementation code
 
-type Transaction struct {
+type FalseTransaction struct {
 	Id string
 	Approved bool
 	Source string
@@ -10,18 +10,18 @@ type Transaction struct {
 }
 
 
-func (t *Transaction) Initiate() {
+func (t *FalseTransactionn) Initiate() {
 	// business logic
 }
 
-func (t *Transaction) Revert() {
+func (t *FalseTransactionn) Revert() {
 	// business logic
 }
 
-func (t *Transaction) Save() {
+func (t *FalseTransactionn) Save() {
 	// business logic
 }
 
-func (t *Transaction) Update() {
+func (t *FalseTransactionn) Update() {
 	// business logic
 }
