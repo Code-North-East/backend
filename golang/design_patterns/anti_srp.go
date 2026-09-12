@@ -2,7 +2,7 @@ package designpatterns
 
 // Adding the anti-srp implementation code
 
-type struct Transaction {
+type Transaction struct {
 	Id string
 	Approved bool
 	Source string
