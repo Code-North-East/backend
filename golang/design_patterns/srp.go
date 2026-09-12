@@ -17,15 +17,16 @@ type Transaction struct {
 }
 
 type TransactionRepository struct {
-	db *sql.DB
 }
 
 func (t *Transaction) Initiate() {
 	// business logic
+	return
 }
 
 func (t *Transaction) Revert() {
 	// business logic
+	return
 }
 
 func (t *TransactionRepository) Save(transaction *Transaction) error {
