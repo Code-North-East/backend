@@ -1,5 +1,7 @@
 package designpatterns
 
+import "database/sql"
+
 // Adding the SRP implementation code
 
 type TransactionStore interface {
