@@ -7,7 +7,6 @@
 
 - [Project Directory Schema](assets/markdown/project-directory-schema.md)
 - [Development Guidelines](assets/markdown/development-guidelines.md)
-- [90-day interview preparation](assets/markdown/90-day-interview-prep.md)
 - [Golang](golang/README.md)
 - [Python](python/README.md)
 - [JavaScript](javascript/README.md)
