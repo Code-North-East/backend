@@ -33,6 +33,10 @@ func main() {
 	InsertSLLNodeTail(60)
 	DeleteSLLNodeTail()
 	InsertSLLNodeTail(70)
+	// Insert at the head of the doubly linked list
+	InsertDLLNodeHead(15)
+	InsertDLLNodeHead(25)
+	InsertDLLNodeHead(35)
 }
 
 // let's write a program to convert a string into a number using golang
@@ -55,8 +59,18 @@ type SLLNode struct {
 	Next *SLLNode
 }
 
+// Write the logic for Doubly List Node
+type DLLNode struct {
+	Data uint64
+	Next *DLLNode
+	Prev *DLLNode
+}
+
 var headSLLNode *SLLNode
 var tailSLLNode *SLLNode
+
+var headDLLNode *DLLNode
+var tailDLLNode *DLLNode
 
 // Insert the data at the head of the node
 func InsertSLLNodeHead(data uint64) {
@@ -71,6 +85,27 @@ func InsertSLLNodeHead(data uint64) {
 	}
 	// Print the head and the tail
 	log.Printf("Head - %d; Tail - %d\n", headSLLNode.Data, tailSLLNode.Data)
+}
+
+// Insert the data at the head of the Doubly Linked List Node
+func InsertDLLNodeHead(data uint64) {
+	// check if the head of the Doubly linked list is null or not
+	if headDLLNode == nil {
+		headDLLNode = &DLLNode{Data: data}
+		tailDLLNode = headDLLNode
+	} else {
+	// if the head is not null which means data exists in the linked list and the logic for insertion should be different
+		tempNode := &DLLNode{Data: data}
+		tempNode.Next = headDLLNode
+		headDLLNode.Prev = tempNode
+		headDLLNode = tempNode
+	}
+	// Enhance the logging, it should not only take the head and the tail data; it should be showing the reference of the prev-> head-> next too
+	if headDLLNode.Next != nil && tailDLLNode.Prev != nil {
+		log.Printf("Head - %d -> %d; %d <- Tail - %d;", headDLLNode.Data, headDLLNode.Next.Data, tailDLLNode.Prev.Data, tailDLLNode.Data)
+		return	
+	}
+	log.Printf("Head - %d; Tail - %d;", headDLLNode.Data, tailDLLNode.Data)
 }	
 
 // Read the data inside the singly linked list
@@ -147,3 +182,4 @@ func DeleteSLLNodeTail() {
 		tempNode = tempNode.Next
 	}
 }
+
