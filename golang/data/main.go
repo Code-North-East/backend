@@ -37,6 +37,7 @@ func main() {
 	InsertDLLNodeHead(15)
 	InsertDLLNodeHead(25)
 	InsertDLLNodeHead(35)
+	ReadDLLNodeHeadToTail()
 }
 
 // let's write a program to convert a string into a number using golang
@@ -93,6 +94,7 @@ func InsertDLLNodeHead(data uint64) {
 	if headDLLNode == nil {
 		headDLLNode = &DLLNode{Data: data}
 		tailDLLNode = headDLLNode
+		tailDLLNode.Prev = headDLLNode
 	} else {
 	// if the head is not null which means data exists in the linked list and the logic for insertion should be different
 		tempNode := &DLLNode{Data: data}
@@ -102,7 +104,7 @@ func InsertDLLNodeHead(data uint64) {
 	}
 	// Enhance the logging, it should not only take the head and the tail data; it should be showing the reference of the prev-> head-> next too
 	if headDLLNode.Next != nil && tailDLLNode.Prev != nil {
-		log.Printf("Head - %d -> %d; %d <- Tail - %d;", headDLLNode.Data, headDLLNode.Next.Data, tailDLLNode.Prev.Data, tailDLLNode.Data)
+		log.Printf("Head - %d -> %d; %d <- Tail - %d;", headDLLNode.Data, headDLLNode.Next.Data, tailDLLNode.Prev.Data,tailDLLNode.Data)
 		return	
 	}
 	log.Printf("Head - %d; Tail - %d;", headDLLNode.Data, tailDLLNode.Data)
@@ -121,6 +123,30 @@ func ReadSLLNode() {
 			tempNode = tempNode.Next
 		}
 	}
+}
+
+// Read the data inside the doubly linked list
+func ReadDLLNodeHeadToTail() {
+	if headDLLNode == nil {
+		log.Println("No elements present in the node")
+	} else {
+		tempNode := headDLLNode
+		for tempNode != nil {
+			if tempNode.Prev != nil && tempNode.Next != nil {
+				log.Printf("%d -> %d -> %d", tempNode.Prev.Data, tempNode.Data, tempNode.Next.Data)
+			} else if tempNode.Next != nil && tempNode.Prev == nil {
+				log.Printf("x -> %d -> %d", tempNode.Data, tempNode.Next.Data)
+			} else if tempNode.Prev	!= nil && tempNode.Next == nil {
+				log.Printf("%d -> %d -> x", tempNode.Prev.Data, tempNode.Data)
+			}
+			tempNode = tempNode.Next
+		}
+	}
+}
+
+// Read the data inside the doubly linked list (inverted)
+func ReadDLLNodeTailToHead() {
+	// To be implemented
 }
 
 // Write the function to insert at the tail of the node
