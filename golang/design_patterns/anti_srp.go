@@ -10,18 +10,18 @@ type FalseTransaction struct {
 }
 
 
-func (t *FalseTransactionn) Initiate() {
+func (t *FalseTransaction) Initiate() {
 	// business logic
 }
 
-func (t *FalseTransactionn) Revert() {
+func (t *FalseTransaction) Revert() {
 	// business logic
 }
 
-func (t *FalseTransactionn) Save() {
+func (t *FalseTransaction) Save() {
 	// business logic
 }
 
-func (t *FalseTransactionn) Update() {
+func (t *FalseTransaction) Update() {
 	// business logic
 }
