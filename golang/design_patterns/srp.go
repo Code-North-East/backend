@@ -1,6 +1,4 @@
-package designpatterns
-
-import "database/sql"
+package design_patterns
 
 // Adding the SRP implementation code
 
@@ -21,12 +19,10 @@ type TransactionRepository struct {
 
 func (t *Transaction) Initiate() {
 	// business logic
-	return
 }
 
 func (t *Transaction) Revert() {
 	// business logic
-	return
 }
 
 func (t *TransactionRepository) Save(transaction *Transaction) error {

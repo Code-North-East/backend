@@ -1,4 +1,4 @@
-package designpatterns
+package design_patterns
 
 // Adding the anti-srp implementation code
 
