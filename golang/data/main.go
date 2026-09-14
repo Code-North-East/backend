@@ -459,21 +459,21 @@ func BinarySearch(data []int, key int) int {
 	return enhancedSearch(data, low, high, key)
 }
 
-// recursive approach
-func search(data []int, low, high, key int) int {
-	// case to be handled, exit if the low is greater than high
-	if low > high {
-		return -1
-	}
-	mid := low + (high-low)/2
-	if key == data[mid] {
-		return mid
-	} else if data[mid] < key {
-		return search(data, mid+1, high, key)
-	} else {
-		return search(data, low, mid-1, key)
-	}
-}
+// recursive approach: Should not be used anymore
+// func search(data []int, low, high, key int) int {
+// 	// case to be handled, exit if the low is greater than high
+// 	if low > high {
+// 		return -1
+// 	}
+// 	mid := low + (high-low)/2
+// 	if key == data[mid] {
+// 		return mid
+// 	} else if data[mid] < key {
+// 		return search(data, mid+1, high, key)
+// 	} else {
+// 		return search(data, low, mid-1, key)
+// 	}
+// }
 
 // use the for loop for a more optimized version Go does not support Tail Call Optimization
 // so writing it in a iterative way instead of a recursive way makes more sense
