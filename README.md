@@ -9,8 +9,6 @@
 - [Development Guidelines](assets/markdown/development-guidelines.md)
 - [Golang](golang/README.md)
 - [Python](python/README.md)
-- [JavaScript](javascript/README.md)
-- [TypeScript](javascript/README.md)
 - [Java](java/README.md)
 
 ## Preparation

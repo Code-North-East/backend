@@ -13,6 +13,7 @@ Cargo.lock
 *.test
 *.bat
 *.jar
+**/*.jar
 *.out
 **/*.pyc
 **/__pycache__/
@@ -33,10 +34,10 @@ build/
 target/
 bin/
 .mvn/
-!/.mvn/wrapper/maven-wrapper.jar
+**/.mvn/wrapper/maven-wrapper.jar
 .gradle/
 **/build/
-!gradle/wrapper/gradle-wrapper.jar
+**/gradle/wrapper/gradle-wrapper.jar
 *.log
 .DS_Store
 Thumbs.db
