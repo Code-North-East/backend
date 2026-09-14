@@ -1,0 +1,42 @@
+name: Java Linting
+
+on:
+  push:
+    branches: [ master, development ]
+  pull_request:
+    branches: [ master, development ]
+
+jobs:
+  checkstyle:
+    name: Run Checkstyle
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Clone the repository code onto the runner
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      # 2. Install the Java Development Kit (JDK)
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Set up Reviewdog
+        uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+      # 4. Download and run Checkstyle, then pipe results to Reviewdog
+      - name: Run Checkstyle Linter
+        env:
+          REVIEWDOG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHECKSTYLE_VERSION: "10.15.0" # Specify your preferred version
+        run: |
+          # Download the standalone Checkstyle tool
+          wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-${CHECKSTYLE_VERSION}/checkstyle-${CHECKSTYLE_VERSION}-all.jar
+          
+          # Run Checkstyle using the standard Google Java Style rules against all Java files
+          java -jar checkstyle-${CHECKSTYLE_VERSION}-all.jar -c /google_checks.xml -f xml src/ \
+          | reviewdog -f=checkstyle \
+                      -name="Checkstyle" \
+                      -reporter=github-pr-review \
+                      -level=error
