@@ -1,5 +1,10 @@
-## Golang Guide
+## CI Link usage
+Use the command for checking lint issues locally
+```bash
+golangci-lint run
+```
 
+## Golang Guide
 
 **Go:** Golang is a general purpose programming language which is statically typed and compiled. It was designed at Google.
 

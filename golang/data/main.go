@@ -15,8 +15,8 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 	"log"
+	"strconv"
 )
 
 // execution/entry point of the program
@@ -59,10 +59,10 @@ func main() {
 	ReadDLLNodeTailToHead()
 	DeleteDLLNodeHead()
 	ReadDLLNodeHeadToTail()
-	keyNode := &DLLNode{ Data: 55}
+	keyNode := &DLLNode{Data: 55}
 	DeleteSpecificNodeFromDLL(keyNode)
 	ReadDLLNodeHeadToTail()
-	keyNode = &DLLNode { Data: 75}
+	keyNode = &DLLNode{Data: 75}
 	InsertDLLAfterPos(keyNode, 105)
 	ReadDLLNodeHeadToTail()
 	ReadDLLNodeTailToHead()
@@ -78,6 +78,12 @@ func main() {
 	ReadCLL()
 	DeleteCLLNodeTail()
 	ReadCLL()
+	pos := BinarySearch([]int{10, 20, 30, 40, 55, 65, 75, 95, 125}, 125)
+	fmt.Printf("Binary Search: data exists in the following pos %d\n", pos)
+	sortedArr := MergeSort([]int{100, 200, 50, 300, 10, 5, 150})
+	fmt.Println("Merge sorted arr: ", sortedArr)
+	quickSortedArr := QuickSort([]int{100, 200, 50, 300, 10, 5, 150})
+	fmt.Println(quickSortedArr)
 }
 
 // let's write a program to convert a string into a number using golang
@@ -136,7 +142,7 @@ func InsertDLLNodeHead(data uint64) {
 		tailDLLNode = headDLLNode
 		tailDLLNode.Prev = headDLLNode
 	} else {
-	// if the head is not null which means data exists in the linked list and the logic for insertion should be different
+		// if the head is not null which means data exists in the linked list and the logic for insertion should be different
 		tempNode := &DLLNode{Data: data}
 		tempNode.Next = headDLLNode
 		headDLLNode.Prev = tempNode
@@ -144,8 +150,8 @@ func InsertDLLNodeHead(data uint64) {
 	}
 	// Enhance the logging, it should not only take the head and the tail data; it should be showing the reference of the prev-> head-> next too
 	if headDLLNode.Next != nil && tailDLLNode.Prev != nil {
-		log.Printf("Head - %d -> %d; %d <- Tail - %d;", headDLLNode.Data, headDLLNode.Next.Data, tailDLLNode.Prev.Data,tailDLLNode.Data)
-		return	
+		log.Printf("Head - %d -> %d; %d <- Tail - %d;", headDLLNode.Data, headDLLNode.Next.Data, tailDLLNode.Prev.Data, tailDLLNode.Data)
+		return
 	}
 	log.Printf("Head - %d; Tail - %d;", headDLLNode.Data, tailDLLNode.Data)
 }
@@ -164,7 +170,7 @@ func InsertCLLHead(data uint64) {
 	}
 	tailSLLNode.Next = headSLLNode
 	log.Printf("Head: %d, Tail: %d", headSLLNode.Data, tailSLLNode.Data)
-}	
+}
 
 // Read the data inside the singly linked list
 func ReadSLLNode() {
@@ -193,7 +199,7 @@ func ReadDLLNodeHeadToTail() {
 				log.Printf("%d -> %d -> %d", tempNode.Prev.Data, tempNode.Data, tempNode.Next.Data)
 			} else if tempNode.Next != nil && tempNode.Prev == nil {
 				log.Printf("x -> %d -> %d", tempNode.Data, tempNode.Next.Data)
-			} else if tempNode.Prev	!= nil && tempNode.Next == nil {
+			} else if tempNode.Prev != nil && tempNode.Next == nil {
 				log.Printf("%d -> %d -> x", tempNode.Prev.Data, tempNode.Data)
 			}
 			tempNode = tempNode.Next
@@ -235,7 +241,7 @@ func ReadCLL() {
 				return
 			}
 			if tempNode.Next != nil {
-				log.Printf("%d -> %d", tempNode.Data, tempNode.Next.Data)	
+				log.Printf("%d -> %d", tempNode.Data, tempNode.Next.Data)
 			}
 			tempNode = tempNode.Next
 		}
@@ -269,7 +275,7 @@ func InsertDLLNodeTail(data uint64) {
 		tailDLLNode = tempNode
 	}
 	if headDLLNode.Next != nil && tailDLLNode.Prev != nil {
-		log.Printf("Head - %d -> %d; %d <- Tail - %d;", headDLLNode.Data, headDLLNode.Next.Data, tailDLLNode.Prev.Data,tailDLLNode.Data)
+		log.Printf("Head - %d -> %d; %d <- Tail - %d;", headDLLNode.Data, headDLLNode.Next.Data, tailDLLNode.Prev.Data, tailDLLNode.Data)
 		return
 	}
 	log.Printf("Head - %d; Tail - %d;", headDLLNode.Data, tailDLLNode.Data)
@@ -286,7 +292,7 @@ func InsertDLLAfterPos(key *DLLNode, data uint64) {
 		for tempNode != nil {
 			if tempNode.Data == key.Data {
 				log.Printf("Adding element after %d", tempNode.Data)
-				newNode := &DLLNode{ Data: data}
+				newNode := &DLLNode{Data: data}
 				nextNode := tempNode.Next
 				tempNode.Next = newNode
 				newNode.Prev = tempNode
@@ -303,11 +309,11 @@ func InsertDLLAfterPos(key *DLLNode, data uint64) {
 // Write the function for inserting data at the end of the circular linked list
 func InsertCLLTail(data uint64) {
 	if tailSLLNode == nil {
-		tailSLLNode = &SLLNode {Data: data}
+		tailSLLNode = &SLLNode{Data: data}
 		headSLLNode = tailSLLNode
 		tailSLLNode.Next = headSLLNode
 	} else {
-		tempNode := &SLLNode {Data: data}
+		tempNode := &SLLNode{Data: data}
 		tailSLLNode.Next = tempNode
 		tempNode.Next = headSLLNode
 		tailSLLNode = tempNode
@@ -373,7 +379,6 @@ func DeleteSLLNodeTail() {
 		tempNode = tempNode.Next
 	}
 }
-
 
 // Write the function for deleting from the tail of the Doubly Linked List
 func DeleteDLLNodeTail() {
@@ -446,5 +451,112 @@ func DeleteCLLNodeTail() {
 	}
 }
 
+// Implement the binary search on a sorted array
+// Time complexity - Olog(n)
+func BinarySearch(data []int, key int) int {
+	high := len(data) - 1
+	low := 0
+	return enhancedSearch(data, low, high, key)
+}
 
+// recursive approach: Should not be used anymore
+// func search(data []int, low, high, key int) int {
+// 	// case to be handled, exit if the low is greater than high
+// 	if low > high {
+// 		return -1
+// 	}
+// 	mid := low + (high-low)/2
+// 	if key == data[mid] {
+// 		return mid
+// 	} else if data[mid] < key {
+// 		return search(data, mid+1, high, key)
+// 	} else {
+// 		return search(data, low, mid-1, key)
+// 	}
+// }
+
+// use the for loop for a more optimized version Go does not support Tail Call Optimization
+// so writing it in a iterative way instead of a recursive way makes more sense
+func enhancedSearch(data []int, low, high, key int) int {
+	for low <= high {
+		mid := low + (high-low)/2
+		if data[mid] == key {
+			return mid
+		} else if data[mid] > key {
+			high = mid - 1
+		} else {
+			low = mid + 1
+		}
+	}
+	return -1
+}
+
+// Write the function to implement merge sort for an array
+// Time complexity taken by a merge sort is O(nlog(n))
+// Space complexity of a merge sort is O(n)
+func MergeSort(data []int) []int {
+	// check if the length of the array is 0 or 1
+	if len(data) <= 1 {
+		return data
+	}
+	// calculate the mid
+	mid := len(data) / 2
+	// divide the left and the right
+	left := MergeSort(data[:mid])
+	right := MergeSort(data[mid:])
+	return merge(left, right)
+}
+
+// recursive function embedding the merge sort logic
+func merge(left, right []int) []int {
+	res := make([]int, 0, len(left)+len(right))
+	i := 0
+	j := 0
+	for i < len(left) && j < len(right) {
+		if left[i] <= right[j] {
+			res = append(res, left[i])
+			i++
+		} else {
+			res = append(res, right[j])
+			j++
+		}
+	}
+	res = append(res, left[i:]...)
+	res = append(res, right[j:]...)
+	return res
+}
+
+// Write the implementation of Quick Sort
+func QuickSort(data []int) []int {
+	if len(data) < 2 {
+		return data
+	}
+
+	low := 0
+	high := len(data)-1
+	sortRecursive(data, low, high)
+	return data
+}
+
+func sortRecursive(data[]int, low, high int) {
+	if low < high {
+		pivotIndex := partition(data, low, high)
+		sortRecursive(data, low, pivotIndex -1)
+		sortRecursive(data, pivotIndex+1, high)
+	}
+}
+
+func partition(data[]int, low, high int) int {
+	i, j := low, low
+	pivotIndex := high
+	for j < high {
+		if data[j] < data[pivotIndex] {
+			data[i], data[j] = data[j], data[i]
+			i++
+		}
+		j++
+	}
+	data[i], data[high] = data[high], data[i]
+	return i
+}
 
