@@ -1,5 +1,8 @@
 package designpatterns
 
+// SRP states a struct a module should have one single reason to change
+// There should be a clear separation of concern
+
 import (
 	"database/sql"
 	"fmt"
