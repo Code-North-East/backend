@@ -1,3 +1,10 @@
+## Checking the Test Coverage of the module
+
+```bash
+go test -cover ./...
+```
+This repository will contain all the code related to understanding the concurrency in Golang
+
 ## Concurrency and Parallelism in Golang
 
 Concurrency is one of the most important topic while developing scalable applications in Golang.
