@@ -11,6 +11,14 @@
 - [Python](python/README.md)
 - [Java](java/README.md)
 
+
+## Daily Action Items
+
+- [ ] SOLID Principle revision
+- [ ] Binary Search Tree
+- [ ] LeetCode Question - 1
+- [ ] NeetCode Question - 1
+
 ## Preparation
 
 A parallel-track plan for backend interviews. Online assessments are the gate, so DSA stays daily. Language, design, and project work run beside it so the technical round and resume stay ready at the same time.
