@@ -18,12 +18,13 @@
 - [ ] Binary Search Tree
 - [ ] LeetCode Question - 1
 - [ ] NeetCode Question - 1
+- [ ] HLD Session (Completing the basics of Caching)
 
 ## Preparation
 
 A parallel-track plan for backend interviews. Online assessments are the gate, so DSA stays daily. Language, design, and project work run beside it so the technical round and resume stay ready at the same time.
 
-Target cadence: **5–6 hours on weekdays**, **9–10 hours on weekends** (~30–32 hours/week, ~390–410 hours total).
+Target cadence: **5–6 hours on weekdays**, **10–11 hours on weekends** (~32–34 hours/week, ~410–430 hours total).
 
 ---
 
