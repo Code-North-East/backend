@@ -1,0 +1,23 @@
+name: Java Linting
+
+on:
+  push:
+    branches: [ master, development ]
+  pull_request:
+    branches: [ master, development ]
+
+jobs:
+  checkstyle:
+    name: Run Checkstyle
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Clone the repository code onto the runner
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      # 2. Install the Java Development Kit (JDK)
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'

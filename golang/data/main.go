@@ -17,6 +17,7 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	"unicode"
 )
 
 // execution/entry point of the program
@@ -84,6 +85,11 @@ func main() {
 	fmt.Println("Merge sorted arr: ", sortedArr)
 	quickSortedArr := QuickSort([]int{100, 200, 50, 300, 10, 5, 150})
 	fmt.Println(quickSortedArr)
+
+	// NeetCode valid palindrome question - 
+	if validPalindrome("HeeH") {
+		fmt.Println("The string is a valid palindrome")
+	}
 }
 
 // let's write a program to convert a string into a number using golang
@@ -560,3 +566,26 @@ func partition(data[]int, low, high int) int {
 	return i
 }
 
+// Two pointer questions (Neetcode)
+// Given a string, return true if the number is a valid palindrome or return false
+// Always use the unicode standard library for handling the alphanumeric case
+func validPalindrome(s string) bool {
+	fp := 0
+	bp := len(s)-1
+	for fp < bp {
+		if !unicode.IsLetter(rune(s[fp])) && !unicode.IsNumber(rune(s[fp])) {
+			fp++
+			continue
+		}
+		if !unicode.IsLetter(rune(s[bp])) && !unicode.IsNumber(rune(s[bp])) {
+			bp--
+			continue
+		}
+		if unicode.ToLower(rune(s[bp])) != unicode.ToLower(rune(s[fp])) {
+			return false
+		}
+		fp++
+		bp--
+	}
+	return true
+}
