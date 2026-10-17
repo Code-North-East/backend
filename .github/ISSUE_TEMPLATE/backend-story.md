@@ -1,3 +1,11 @@
+---
+name: Backend Story
+about: Standard template to write down a story related to backend repository
+title: '[Backend] '
+labels: task
+assignees: ''
+---
+
 ### Summary
 
 A short description about the issue and the resolution to be provided.
