@@ -1,0 +1,23 @@
+name: "Enforce PR Title Convention"
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  validate-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR Title Format
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          
+          # Regex matches "feat(#123): text" or other types like "fix(#123): text"
+          # To strictly ONLY allow "feat", change the start to: ^feat\(#[0-9]+\):
+          PATTERN="^(feat|fix|docs|chore|refactor|ci|test)\(#[0-9]+\): .+"
+          
+          if [[ ! "$TITLE" =~ $PATTERN ]]; then
+            echo "::error::Invalid PR title: '$TITLE'"
+            echo "::error::Title must match format: 'feat(#123): short description'"
+            exit 1
+          fi
