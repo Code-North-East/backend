@@ -15,14 +15,5 @@
     ```
 
 ### Branch naming conventions:
-- Branch must be derived from an issue and not be created manually or locally.
-- Once merged with a parent branch (development/main) the private branch must be deleted.
-
-### Epic references:
-An epic if, needs to defined in simple words _It can be termed as a document which will contain the collection of tasks which needs to be completed within a milestone_
-
-- A feature should always be part of an epic.
-- An **Epic doc** will contain all the necessary design docs related to the development and deployment and integration of that feature.
-- A [story](abbreviations.md#storyissueticket) should never be derived from a draft epic & once an epic is finalized, stories should be created from that epic.
-
+- Once merged with a parent branch (master) the private branch must be deleted.
 
