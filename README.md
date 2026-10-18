@@ -1,6 +1,6 @@
 ## Backend Knowledge Base
 
-#### This repository contains the documents and the code references required for brushing up backend concepts.
+#### This repository contains the code references required for brushing up backend concepts.
 
 > **Note:**
 > Read each reference in a sequential way to understand the steps taken by the maintainer in keeping the documentation and the source code standardized.
