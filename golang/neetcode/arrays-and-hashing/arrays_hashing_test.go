@@ -51,6 +51,11 @@ func TestLongestConsecutiveSequence(t *testing.T) {
 	}
 }
 
+func TestProductExceptSelf(t *testing.T) {
+	res := productExceptSelf([]int{1, 2, 3, 4})
+	fmt.Printf("left suffix product: %v\n", res)
+}
+
 func hasDuplicate(nums []int) bool {
     data := make(map[int]int)
 	for i, num := range nums {
@@ -180,4 +185,33 @@ func longestConsecutiveSequence(nums []int) int {
 		}
 	}
 	return longestStreak
+}
+
+func productExceptSelf(nums []int) []int {
+	if len(nums) == 0 {
+		return []int{}
+	}
+	products := make([]int, len(nums))
+	// find the left product of all the elements
+	leftProduct := 1
+	i := 0
+	for i < len(nums) {
+		products[i] = leftProduct
+		leftProduct *= nums[i]
+		i++
+	}
+
+	// output till now for input 1, 2, 3, 4
+	// 1, 1, 2, 6
+
+	// find the right product of all the left product elements
+	i = len(nums)-1
+	rightProduct := 1
+	for i >= 0 {
+		products[i] *= rightProduct
+		rightProduct *= nums[i]
+		i--
+	}
+
+	return products
 }
