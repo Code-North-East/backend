@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"testing"
+	"strconv"
+	"strings"
 )
 
 func TestHasDuplicate(t *testing.T) {
@@ -54,6 +56,22 @@ func TestLongestConsecutiveSequence(t *testing.T) {
 func TestProductExceptSelf(t *testing.T) {
 	res := productExceptSelf([]int{1, 2, 3, 4})
 	fmt.Printf("left suffix product: %v\n", res)
+}
+
+func TestEncode(t *testing.T) {
+	s := &Solution{}
+	er := "5#Hello7#Pratyay"
+	rs := s.Encode([]string{"Hello", "Pratyay"})
+	if rs != er {
+		t.Errorf("Failed: Expected result %s; found result %s", er, rs)
+	}
+}
+
+func TestDecode(t *testing.T) {
+	s := &Solution{}
+	i := "6#Hello#7##Ankita"
+	rs := s.Decode(i)
+	t.Errorf("%v", rs)
 }
 
 func hasDuplicate(nums []int) bool {
@@ -214,4 +232,65 @@ func productExceptSelf(nums []int) []int {
 	}
 
 	return products
+}
+
+type Solution struct{}
+
+// Encode joins a list of strings into a single encoded string.
+func (s *Solution) Encode(strs []string) string {
+    if len(strs) == 0 {
+        return ""
+    }
+    
+    var sb strings.Builder
+    for _, str := range strs {
+        // Use byte length and strings.Builder for O(n) performance
+        sb.WriteString(strconv.Itoa(len(str)))
+        sb.WriteString("#")
+        sb.WriteString(str)
+    }
+    return sb.String()
+}
+
+// Decode extracts the original list of strings from the encoded string.
+func (s *Solution) Decode(encoded string) []string {
+    if encoded == "" {
+        return []string{}
+    }
+
+    var res []string
+    i := 0
+    n := len(encoded)
+
+    for i < n {
+        // Find the position of the next '#' delimiter
+        j := i
+        for j < n && encoded[j] != '#' {
+            j++
+        }
+
+        // If we reach the end without finding '#', something is wrong
+        if j >= n {
+            break
+        }
+
+        // Parse the length string located between i and j
+        lengthStr := encoded[i:j]
+        length, err := strconv.Atoi(lengthStr)
+        if err != nil {
+            break
+        }
+
+        // The actual string starts right after '#' (at j + 1)
+        start := j + 1
+        end := start + length
+
+        // Extract the string and append to results
+        res = append(res, encoded[start:end])
+
+        // Move pointer `i` past the current decoded string
+        i = end
+    }
+
+    return res
 }
