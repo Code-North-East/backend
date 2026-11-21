@@ -1,9 +1,29 @@
 {
-    "workbench.colorTheme": "Quiet Light",
-    "editor.fontSize": 14,
-    "editor.fontFamily": "JetBrains Mono",
+    // --- editor changes ---
+    "editor.fontSize": 15,
+    "editor.fontFamily": "Monaco",
     "editor.fontLigatures": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.linkedEditing": true,
+    "editor.stickyScroll.enabled": true,
+    // --- workbench changes ---
+    "workbench.colorTheme": "Light 2026",
+    // --- files changes ---
     "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 500,
-    "chat.disableAIFeatures": true
+    "files.autoSaveDelay": 300,
+    "files.trimTrailingWhitespace": false,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/*.class": true,
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true
+    },
+    // --- chat disabled (unless you want to get poor in understanding code) ----
+    "chat.disableAIFeatures": true,
+    // --- redhat telemetry ---
+    "redhat.telemetry.enabled": false,
+    "java.compile.nullAnalysis.mode": "disabled"
 }
